@@ -1,0 +1,215 @@
+/* Root variables for light/dark mode */
+:root {
+    --bg-light: #f3f6fa;
+    --bg-dark: #1e1e1e;
+    --primary: #0078d4;
+    --text-light: #222;
+    --text-dark: #fff;
+    --sidebar-bg: #242424;
+    --card-bg: #fff;
+    --card-bg-dark: #23272f;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--bg-light);
+    color: var(--text-light);
+    transition: background 0.3s, color 0.3s;
+    min-height: 100vh;
+}
+
+/* Dark mode */
+body.dark-mode {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+header {
+    position: relative;
+    background: #b3d8fd;
+    /* Light blue background */
+    min-height: 180px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1.5em 2em 1em 2em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.header-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.header-title {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.2em;
+    letter-spacing: 1px;
+}
+
+.header-nav {
+    display: flex;
+    gap: 1.5em;
+    margin-top: 0.5em;
+}
+
+.header-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1em;
+    padding: 0.3em 0.8em;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.header-nav a:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.2em;
+}
+
+.search-bar {
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 20px;
+    padding: 0.5em 1.2em;
+    font-size: 1em;
+    margin-right: 1em;
+    outline: none;
+    min-width: 180px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 0.7em;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+    padding: 0.3em 0.8em;
+}
+
+.profile-pic {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+}
+
+.profile-name {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.05em;
+}
+
+.toggle-mode-btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 16px;
+    padding: 0.4em 1em;
+    margin-left: 1em;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.2s;
+}
+
+.toggle-mode-btn:hover {
+    background: #005fa3;
+}
+
+/* Sidebar for chat/forum/friends */
+.sidebar {
+    position: fixed;
+    top: 180px;
+    left: 0;
+    width: 230px;
+    height: calc(100vh - 180px);
+    background: var(--sidebar-bg);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 1.2em 0.8em;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+}
+
+.sidebar .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.7em;
+    padding: 0.7em 1em;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 0.2em;
+}
+
+.sidebar .menu-item:hover,
+.sidebar .menu-item.active {
+    background: var(--primary);
+    color: #fff;
+}
+
+main {
+    margin-left: 250px;
+    padding: 2em 2em 2em 2em;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 1.5em;
+    margin-bottom: 2em;
+    transition: background 0.3s;
+}
+
+body.dark-mode .card {
+    background: var(--card-bg-dark);
+}
+
+.logo {
+    height: 48px;
+    width: auto;
+    vertical-align: middle;
+    margin-right: 1em;
+}
+
+@media (max-width: 900px) {
+    .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-around;
+        box-shadow: none;
+        margin-bottom: 1em;
+    }
+
+    main {
+        margin-left: 0;
+        padding: 1em;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        min-height: 120px;
+        padding: 1em;
+    }
+
+    .header-right {
+        margin-top: 1em;
+    }
+}

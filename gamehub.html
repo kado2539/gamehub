@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GameHub - Share Your Gameplay!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        .logo {
+            height: 130px;
+            width: auto;
+            vertical-align: middle;
+            margin-right: 1em;
+            max-width: 350px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-left">
+            <img src="logo.png" alt="GameHub Logo" class="logo">
+        </div>
+        <nav>
+            <ul id="tab-nav">
+                <li><a href="#" data-tab="feed" class="active">Feed</a></li>
+                <li><a href="#" data-tab="tournaments">Tournaments</a></li>
+                <li><a href="#" data-tab="forum">Forum</a></li>
+                <li><a href="#" data-tab="admin">Admin Panel</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <input type="text" class="search-bar" placeholder="Search...">
+            <span title="Home" style="font-size:1.5em;cursor:pointer;">🏠</span>
+            <span title="Menu" style="font-size:1.5em;cursor:pointer;">☰</span>
+            <div class="profile">
+                <img src="profile.jpg" alt="Profile" class="profile-pic">
+                <span class="profile-name">Username</span>
+            </div>
+            <button class="toggle-mode-btn" onclick="toggleMode()">🌙</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Post Gameplay Section -->
+        <section id="post">
+            <h2>Share Your Gameplay</h2>
+            <form id="uploadForm">
+                <label for="media">Upload Pic/Video:</label>
+                <input type="file" id="media" name="media" accept="image/*,video/*" required>
+                <textarea name="caption" placeholder="Add a caption..." required></textarea>
+                <button type="submit">Post</button>
+            </form>
+        </section>
+
+        <!-- Feed Section -->
+        <section id="feed" class="tab-view">
+            <h2>Latest Gameplay</h2>
+            <div class="posts">
+                <!-- Example Post -->
+                <article class="post">
+                    <img src="sample-gameplay.jpg" alt="Gameplay Screenshot">
+                    <p>Awesome killstreak in Call of Duty!</p>
+                    <div class="reactions">
+                        <button>👍</button>
+                        <button>🔥</button>
+                        <button>😂</button>
+                        <button>😮</button>
+                    </div>
+                    <div class="comments">
+                        <h4>Comments</h4>
+                        <ul>
+                            <li><strong>User1:</strong> Nice play!</li>
+                        </ul>
+                        <form>
+                            <input type="text" placeholder="Add a comment...">
+                            <button type="submit">Comment</button>
+                        </form>
+                    </div>
+                </article>
+                <!-- More posts dynamically loaded -->
+            </div>
+        </section>
+
+        <!-- Tournaments Section -->
+        <section id="tournaments" class="tab-view" style="display:none;">
+            <h2>Top Players & Tournaments</h2>
+            <div class="games">
+                <div class="game">
+                    <h3>Call of Duty</h3>
+                    <ul>
+                        <li>1. PlayerA</li>
+                        <li>2. PlayerB</li>
+                        <li>3. PlayerC</li>
+                    </ul>
+                    <button>Join Tournament</button>
+                </div>
+                <div class="game">
+                    <h3>eFootball</h3>
+                    <ul>
+                        <li>1. PlayerX</li>
+                        <li>2. PlayerY</li>
+                        <li>3. PlayerZ</li>
+                    </ul>
+                    <button>Join Tournament</button>
+                </div>
+                <!-- Add more games as needed -->
+            </div>
+        </section>
+
+        <!-- Forum Section -->
+        <section id="forum" class="tab-view" style="display:none;">
+            <h2>Community Forum</h2>
+            <div class="forum-topics">
+                <article>
+                    <h4>Looking for teammates in Call of Duty</h4>
+                    <p>Share your multiplayer invite links here!</p>
+                    <a href="#">Join Discussion</a>
+                </article>
+                <article>
+                    <h4>eFootball Tournament Strategies</h4>
+                    <p>Discuss tactics and share tips.</p>
+                    <a href="#">Join Discussion</a>
+                </article>
+                <!-- More topics -->
+            </div>
+            <form id="newTopicForm">
+                <input type="text" placeholder="Start a new topic..." required>
+                <button type="submit">Post</button>
+            </form>
+        </section>
+
+        <!-- Admin Panel Section -->
+        <section id="admin" class="tab-view" style="display:none;">
+            <h2>Admin Panel</h2>
+            <div>
+                <h3>Monitor Posts</h3>
+                <ul>
+                    <li>Post #123 by User1 <button>Remove</button></li>
+                    <li>Post #124 by User2 <button>Remove</button></li>
+                </ul>
+                <h3>Ban/Remove Users</h3>
+                <ul>
+                    <li>User1 <button>Ban</button></li>
+                    <li>User2 <button>Ban</button></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 GameHub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Tab switching logic
+        document.querySelectorAll('#tab-nav a').forEach(tab => {
+            tab.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelectorAll('#tab-nav a').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-view').forEach(sec => sec.style.display = 'none');
+                document.getElementById(this.dataset.tab).style.display = 'block';
+                this.classList.add('active');
+            });
+        });
+
+        // Dark/Light mode toggle
+        function toggleMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+
+</html>
